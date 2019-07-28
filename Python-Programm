@@ -1,0 +1,101 @@
+import os, shutil, sys
+
+var = 1
+dateiliste = os.scandir(".")
+print("Ordnerliste: ", "\n")
+
+for datei in dateiliste:
+	if os.path.isdir(datei):
+		print(datei.name)
+		
+while var == 1:
+	print("\n")
+	print("Bitte Ordner wählen", "\n")
+	ordnerwahl = input()
+	if os.path.exists(ordnerwahl):
+		print("Ordner gefunden", "\n")
+		var = 0
+	else:
+		print("Ordner nicht gefunden", "\n")
+	
+ordner = os.scandir(ordnerwahl)
+for datei in ordner:
+	if datei.name.endswith(".mp4"):
+		namek = datei.name[0:len(datei.name)-4]
+		kopie = shutil.copy2(namek, namek + "_Kopie" + ".mp4")
+		try:
+			os.chdir("C:/Desktop")
+			if not os.path.exists("Kopien"):
+				os.mkdir("Kopien")
+			os.chdir("C:/Desktop/Kopien")
+			try:
+				if not os.path.exists("Videos"):
+					os.mkdir("Videos")
+				if not kopie in "Videos":
+					shutil.move(kopie, "Videos")
+			except:
+				print("Fehler")
+				sys.exit()
+		except:
+			print("Fehler")
+			sys.exit()
+			
+	if datei.name.endswith(".mp3"):
+		namek = datei.name[0:len(datei.name)-4]
+		kopie = shutil.copy2(namek, namek + "_Kopie" + ".mp3")
+		try:
+			os.chdir("C:/Desktop")
+			if not os.path.exists("Kopien"):
+				os.mkdir("Kopien")
+			os.chdir("C:/Desktop/Kopien")
+			try:
+				if not os.path.exists("Videos"):
+					os.mkdir("Videos")
+				if not kopie in "Videos":
+					shutil.move(kopie, "Videos")
+			except:
+				print("Fehler")
+				sys.exit()
+		except:
+			print("Fehler")
+			sys.exit()
+			
+	if datei.name.endswith(".png"):
+		namek = datei.name[0:len(datei.name)-4]
+		kopie = shutil.copy2(namek, namek + "_Kopie" + ".png")
+		try:
+			os.chdir("C:/Desktop")
+			if not os.path.exists("Kopien"):
+				os.mkdir("Kopien")
+			os.chdir("C:/Desktop/Kopien")
+			try:
+				if not os.path.exists("Fotos"):
+					os.mkdir("Fotos")
+				if not kopie in "Fotos":
+					shutil.move(kopie, "Fotos")
+			except:
+				print("Fehler")
+				sys.exit()
+		except:
+			print("Fehler")
+			sys.exit()
+			
+	if datei.name.endswith(".jpg"):
+		namek = datei.name[0:len(datei.name)-4]
+		kopie = shutil.copy2(namek, namek + "_Kopie" + ".jpg")
+		try:
+			os.chdir("C:/Desktop")
+			if not os.path.exists("Kopien"):
+				os.mkdir("Kopien")
+			os.chdir("C:/Desktop/Kopien")
+			try:
+				if not os.path.exists("Fotos"):
+					os.mkdir("Fotos")
+				if not kopie in "Fotos":
+					shutil.move(kopie, "Fotos")
+			except:
+				print("Fehler")
+				sys.exit()
+		except:
+			print("Fehler")
+			sys.exit()
