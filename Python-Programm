@@ -22,7 +22,7 @@ ordner = os.scandir(ordnerwahl)
 for datei in ordner:
 	if datei.name.endswith(".mp4"):
 		namek = datei.name[0:len(datei.name)-4]
-		kopie = shutil.copy2(namek + "_Kopie" + ".mp4")
+		shutil.copy2(namek + "_Kopie" + ".mp4")
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
@@ -42,7 +42,7 @@ for datei in ordner:
 			
 	if datei.name.endswith(".mp3"):
 		namek = datei.name[0:len(datei.name)-4]
-		kopie = shutil.copy2(namek + "_Kopie" + ".mp3")
+		shutil.copy2(namek + "_Kopie" + ".mp3")
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
@@ -62,7 +62,7 @@ for datei in ordner:
 			
 	if datei.name.endswith(".png"):
 		namek = datei.name[0:len(datei.name)-4]
-		kopie = shutil.copy2(namek + "_Kopie" + ".png")
+		shutil.copy2(namek + "_Kopie" + ".png")
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
@@ -82,7 +82,7 @@ for datei in ordner:
 			
 	if datei.name.endswith(".jpg"):
 		namek = datei.name[0:len(datei.name)-4]
-		kopie = shutil.copy2(namek + "_Kopie" + ".jpg")
+		shutil.copy2(namek + "_Kopie" + ".jpg")
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
