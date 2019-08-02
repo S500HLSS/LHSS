@@ -22,8 +22,9 @@ ordner = os.scandir(ordnerwahl)
 for datei in ordner:
 	if datei.name.endswith(".mp4"):
 		namek = datei.name[0:len(datei.name)-4]
-		shutil.copy2(namek + "_Kopie" + ".mp4")
-		try:
+		kopie = (namek + "_Kopie" + ".mp4")
+                Kopie = shutil.copy2(datei.name, kopie)
+                try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
 				os.mkdir("Kopien")
@@ -31,8 +32,8 @@ for datei in ordner:
 			try:
 				if not os.path.exists("Videos"):
 					os.mkdir("Videos")
-				if not kopie in "Videos":
-					shutil.move(kopie, "Videos")
+				if not Kopie in "Videos":
+					shutil.move(Kopie, "Videos")
 			except:
 				print("Fehler")
 				sys.exit()
@@ -42,8 +43,9 @@ for datei in ordner:
 			
 	if datei.name.endswith(".mp3"):
 		namek = datei.name[0:len(datei.name)-4]
-		shutil.copy2(namek + "_Kopie" + ".mp3")
-		try:
+		kopie = (namek + "_Kopie" + ".mp3")
+                Kopie = shutil.copy2(datei.name, kopie)
+                try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
 				os.mkdir("Kopien")
@@ -51,8 +53,8 @@ for datei in ordner:
 			try:
 				if not os.path.exists("Videos"):
 					os.mkdir("Videos")
-				if not kopie in "Videos":
-					shutil.move(kopie, "Videos")
+				if not Kopie in "Videos":
+					shutil.move(Kopie, "Videos")
 			except:
 				print("Fehler")
 				sys.exit()
@@ -62,7 +64,8 @@ for datei in ordner:
 			
 	if datei.name.endswith(".png"):
 		namek = datei.name[0:len(datei.name)-4]
-		shutil.copy2(namek + "_Kopie" + ".png")
+		kopie = (namek + "_Kopie" + ".png")
+                Kopie = shutil.copy2(datei.name, kopie)
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
@@ -71,8 +74,8 @@ for datei in ordner:
 			try:
 				if not os.path.exists("Fotos"):
 					os.mkdir("Fotos")
-				if not kopie in "Fotos":
-					shutil.move(kopie, "Fotos")
+				if not Kopie in "Fotos":
+					shutil.move(Kopie, "Fotos")
 			except:
 				print("Fehler")
 				sys.exit()
@@ -82,7 +85,8 @@ for datei in ordner:
 			
 	if datei.name.endswith(".jpg"):
 		namek = datei.name[0:len(datei.name)-4]
-		shutil.copy2(namek + "_Kopie" + ".jpg")
+		kopie = (namek + "_Kopie" + ".jpg")
+                Kopie = shutil.copy2(datei.name, kopie)
 		try:
 			os.chdir("C:/Desktop")
 			if not os.path.exists("Kopien"):
@@ -91,8 +95,8 @@ for datei in ordner:
 			try:
 				if not os.path.exists("Fotos"):
 					os.mkdir("Fotos")
-				if not kopie in "Fotos":
-					shutil.move(kopie, "Fotos")
+				if not Kopie in "Fotos":
+					shutil.move(Kopie, "Fotos")
 			except:
 				print("Fehler")
 				sys.exit()
