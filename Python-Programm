@@ -1,105 +1,51 @@
-import os, shutil, sys
+import os, sys, shutil
 
-var = 1
-dateiliste = os.scandir(".")
-print("Ordnerliste: ", "\n")
 
-for datei in dateiliste:
-	if os.path.isdir(datei):
-		print(datei.name)
-		
-while var == 1:
-        print("\n")
-	print("Bitte Ordner wählen", "\n")
-	ordnerwahl = input()
-	if os.path.exists(ordnerwahl):
-		print("Ordner gefunden", "\n")
-		var = 0
-	else:
-		print("Ordner nicht gefunden", "\n")
-	
-ordner = os.scandir(ordnerwahl)
-for datei in ordner:
-	if datei.name.endswith(".mp4"):
-		namek = datei.name[0:len(datei.name)-4]
-		kopie = (namek + "_Kopie" + ".mp4")
-                Kopie = shutil.copy2(datei.name, kopie)
-                try:
-			os.chdir("C:/Desktop")
-			if not os.path.exists("Kopien"):
-				os.mkdir("Kopien")
-			os.chdir("C:/Desktop/Kopien")
-			try:
-				if not os.path.exists("Videos"):
-					os.mkdir("Videos")
-				if not Kopie in "Videos":
-					shutil.move(Kopie, "Videos")
-			except:
-				print("Fehler")
-				sys.exit()
-		except:
-			print("Fehler")
-			sys.exit()
-			
-	if datei.name.endswith(".mp3"):
-		namek = datei.name[0:len(datei.name)-4]
-		kopie = (namek + "_Kopie" + ".mp3")
-                Kopie = shutil.copy2(datei.name, kopie)
-                try:
-			os.chdir("C:/Desktop")
-			if not os.path.exists("Kopien"):
-				os.mkdir("Kopien")
-			os.chdir("C:/Desktop/Kopien")
-			try:
-				if not os.path.exists("Videos"):
-					os.mkdir("Videos")
-				if not Kopie in "Videos":
-					shutil.move(Kopie, "Videos")
-			except:
-				print("Fehler")
-				sys.exit()
-		except:
-			print("Fehler")
-			sys.exit()
-			
-	if datei.name.endswith(".png"):
-		namek = datei.name[0:len(datei.name)-4]
-		kopie = (namek + "_Kopie" + ".png")
-                Kopie = shutil.copy2(datei.name, kopie)
-		try:
-			os.chdir("C:/Desktop")
-			if not os.path.exists("Kopien"):
-				os.mkdir("Kopien")
-			os.chdir("C:/Desktop/Kopien")
-			try:
-				if not os.path.exists("Fotos"):
-					os.mkdir("Fotos")
-				if not Kopie in "Fotos":
-					shutil.move(Kopie, "Fotos")
-			except:
-				print("Fehler")
-				sys.exit()
-		except:
-			print("Fehler")
-			sys.exit()
-			
-	if datei.name.endswith(".jpg"):
-		namek = datei.name[0:len(datei.name)-4]
-		kopie = (namek + "_Kopie" + ".jpg")
-                Kopie = shutil.copy2(datei.name, kopie)
-		try:
-			os.chdir("C:/Desktop")
-			if not os.path.exists("Kopien"):
-				os.mkdir("Kopien")
-			os.chdir("C:/Desktop/Kopien")
-			try:
-				if not os.path.exists("Fotos"):
-					os.mkdir("Fotos")
-				if not Kopie in "Fotos":
-					shutil.move(Kopie, "Fotos")
-			except:
-				print("Fehler")
-				sys.exit()
-		except:
-			print("Fehler")
-			sys.exit()
+data_list = os.scandir(".")
+print("Folders: ")
+
+for folder in data_list:
+    if os.path.isdir(folder):
+        print(folder.name)
+
+while True:
+    folder_choice = input("Please select folder: ")
+    if os.path.exists(folder_choice):
+        print("Folder found.")
+        break
+    else:
+        print("Folder not found, please choose again.")
+
+try:
+    os.chdir("C:/Desktop/")
+    if not os.path.exists("Kopien"):
+        os.mkdir("Kopien")
+    os.chdir("C:/Desktop/Kopien")
+    if not os.path.exists("Videos"):
+        os.mkdir("Videos")
+    if not os.path.exists("Fotos"):
+        os.mkdir("Fotos")
+        
+except:
+    print("Error.")
+    sys.exit(0)
+    
+
+def sort_files(folder_choice):
+    folder = os.scandir(folder_choice)
+    for file in folder:
+        file_ending = file[len(file)-4:len(file)]
+        copy_name = file.name[0:len(file.name)-4]
+        new_file_name = copy_name + "_copy" + file_ending
+        copy = shutil.copy2(file.name, new_file_name)
+        os.chdir("C:/Desktop/Kopien")
+        if file.name.endswith(".mp4") or file.name.endswith(".wav"):
+            os.chdir("C:/Desktop/Kopien/Videos/")
+            if not copy in "Videos":
+                shutil.move(copy, "Videos")
+        if file.name.endswith(".jpg") or file.name.endswith(".png"):
+            os.chdir("C:/Desktop/Kopien/Fotos/")
+            if not copy in "Fotos":
+                shutil.move(copy, "Fotos")
+                
+sort_files(folder_choice)
